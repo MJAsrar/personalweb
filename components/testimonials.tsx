@@ -18,8 +18,8 @@ const testimonials = [
   {
     quote:
       "The custom dashboard Junaid built for our business gives us insights we never had before. It's been a game-changer.",
-    author: "Michael Chen",
-    role: "CEO, TechStart",
+    author: "Abdullah Zubair",
+    role: "CEO, Chrio",
   },
   {
     quote: "Our restaurant's ordering system has never been more efficient. Customers love the WhatsApp integration!",
