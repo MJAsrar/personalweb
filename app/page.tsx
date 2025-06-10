@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Hero from "@/components/hero"
 import About from "@/components/about"
 import Projects from "@/components/projects"
+import PersonalProjects from "@/components/personal-projects"
 import Services from "@/components/services"
 import Testimonials from "@/components/testimonials"
 import Contact from "@/components/contact"
@@ -18,6 +19,7 @@ export default function Home() {
       <Hero />
       <About />
       <Projects />
+      <PersonalProjects />
       <Services />
       <Testimonials />
       <Contact />
