@@ -6,10 +6,27 @@ import SectionHeading from "@/components/section-heading"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, HandCoins, Youtube, Bot, Search } from "lucide-react"
+import { ExternalLink, HandCoins, Youtube, Bot, Search, Dumbbell, TreePine } from "lucide-react"
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
 
 const personalProjects = [
+  {
+    title: "Gym Fitness Center",
+    description: "A modern gym website featuring membership plans, class schedules, trainer profiles, and online booking system.",
+    tags: ["Next.js", "React", "Tailwind CSS"],
+    icon: Dumbbell,
+    color: "bg-orange-500/10 text-orange-600",
+    details: `A comprehensive fitness center website that showcases gym facilities, membership options, and class schedules. Features include trainer profiles, online booking system, and responsive design for optimal user experience across all devices.`,
+    link: "https://gym-nine-pied.vercel.app/",
+  },
+  {
+    title: "BioScout",
+    description: "An AI-powered application that identifies plant and animal species with a RAG-based chatbot for local wildlife in Islamabad.",
+    tags: ["AI", "Computer Vision", "RAG", "Chatbot"],
+    icon: TreePine,
+    color: "bg-green-500/10 text-green-600",
+    details: `BioScout combines computer vision and AI to identify plant and animal species from images. It features a sophisticated RAG (Retrieval-Augmented Generation) chatbot that provides detailed information about recently spotted wildlife in Islamabad. The application helps nature enthusiasts, researchers, and students learn about local biodiversity through interactive AI-powered conversations.`,
+  },
   {
     title: "Zadqa",
     description: "A modern crowdfunding platform empowering individuals and organizations to raise funds for causes they care about.",
@@ -84,23 +101,53 @@ export default function PersonalProjects() {
                   </div>
                 </CardContent>
                 <CardFooter className="p-6 pt-0">
-                  <Dialog open={openIndex === index} onOpenChange={(open) => setOpenIndex(open ? index : null)}>
-                    <DialogTrigger asChild>
-                      <Button variant="ghost" size="sm" className="gap-1">
-                        View details
+                  {project.link ? (
+                    <div className="flex gap-2">
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="gap-1"
+                        onClick={() => window.open(project.link, '_blank')}
+                      >
+                        Visit site
                         <ExternalLink className="h-4 w-4" />
                       </Button>
-                    </DialogTrigger>
-                    <DialogContent>
-                      <DialogHeader>
-                        <DialogTitle>{project.title}</DialogTitle>
-                        <DialogDescription>{project.description}</DialogDescription>
-                      </DialogHeader>
-                      <div className="mt-4 whitespace-pre-line text-sm text-foreground">
-                        {project.details}
-                      </div>
-                    </DialogContent>
-                  </Dialog>
+                      <Dialog open={openIndex === index} onOpenChange={(open) => setOpenIndex(open ? index : null)}>
+                        <DialogTrigger asChild>
+                          <Button variant="ghost" size="sm">
+                            View details
+                          </Button>
+                        </DialogTrigger>
+                        <DialogContent>
+                          <DialogHeader>
+                            <DialogTitle>{project.title}</DialogTitle>
+                            <DialogDescription>{project.description}</DialogDescription>
+                          </DialogHeader>
+                          <div className="mt-4 whitespace-pre-line text-sm text-foreground">
+                            {project.details}
+                          </div>
+                        </DialogContent>
+                      </Dialog>
+                    </div>
+                  ) : (
+                    <Dialog open={openIndex === index} onOpenChange={(open) => setOpenIndex(open ? index : null)}>
+                      <DialogTrigger asChild>
+                        <Button variant="ghost" size="sm" className="gap-1">
+                          View details
+                          <ExternalLink className="h-4 w-4" />
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle>{project.title}</DialogTitle>
+                          <DialogDescription>{project.description}</DialogDescription>
+                        </DialogHeader>
+                        <div className="mt-4 whitespace-pre-line text-sm text-foreground">
+                          {project.details}
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                  )}
                 </CardFooter>
 
                 {hoveredIndex === index && (
